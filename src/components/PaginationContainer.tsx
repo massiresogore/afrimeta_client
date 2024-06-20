@@ -19,7 +19,6 @@ import { useLoaderData, useLocation } from 'react-router-dom';
 function PaginationContainer() {
   const  data = useLoaderData() as MagasinsPaginationResultInterface;
   //const { pageCount, page } = meta.pagination;
-console.log(data.data);
 
   const { search, pathname } = useLocation();
 /* 
@@ -31,7 +30,12 @@ console.log(data.data);
 
 let pageCount = data.data.totalPages==1 ? 0:data.data.totalPages - 1 ;
 let pageNumber = data.data.pageable.pageSize;
-const url = constructUrl({ pageNumber, search, pathname });
+
+const searchParams = new URLSearchParams(search);
+let limitEmelent = Number(searchParams.get('size'));
+if(limitEmelent== 0) limitEmelent=10;
+
+const url = constructUrl({ pageNumber, search, pathname,limitEmelent });
   const renderPagination = ()=> {
    // const isActive = pageNumber === page;
     //const url = constructUrl({ pageNumber, search, pathname });
@@ -48,8 +52,9 @@ const url = constructUrl({ pageNumber, search, pathname });
     pageCount,
     search,
     pathname,
+    limitEmelent
   });
-  console.log(data.data.totalPages,data.data.pageable.pageSize);
+ // console.log(data.data.totalPages,data.data.pageable.pageSize);
   
   return (
     <Pagination className='mt-16'>
