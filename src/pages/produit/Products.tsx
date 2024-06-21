@@ -1,10 +1,12 @@
-import { Filters, ProductsContainer, PaginationContainer } from '@/components';
+import { Filters, ProductsContainer } from '@/components';
 import {
   customFetch,
   type ProductsResponse,
   type ProductsResponseWithParams,
-} from '../utils';
+} from '../../utils';
 import { type LoaderFunction } from 'react-router-dom';
+import { ProduitsPaginationResultInterface } from './interrface/ProduitsPaginationResultInterface';
+import ProduitPaginationContainer from './ProduitPaginationContainer';
 
  const url = '/produits/bataclan'; 
 //const url = '/magasins';
@@ -25,7 +27,7 @@ import { type LoaderFunction } from 'react-router-dom';
 
 export const loader: LoaderFunction = async ({
   request,
-}): Promise<ProductsResponseWithParams> => {
+}): Promise<ProduitsPaginationResultInterface> => {
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);
@@ -41,9 +43,9 @@ function Products() {
   return (
     <>
       {/* <Filters /> */}
-      <ProductsContainer />
-{/*       <PaginationContainer />
- */}    </>
+      <ProductsContainer /> 
+      <ProduitPaginationContainer/>
+    </>
   );
 }
 export default Products;

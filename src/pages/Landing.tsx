@@ -1,6 +1,7 @@
-import { Hero, FeaturedProducts, PaginationContainer } from '@/components';
+import { Hero, FeaturedProducts } from '@/components';
 import { type LoaderFunction } from 'react-router-dom';
 import { ProductsResponseWithParams, customFetch, type ProductsResponse } from '@/utils';
+import ProduitPaginationContainer from './produit/ProduitPaginationContainer';
 
 //const url = '/products?featured=true';
 const url = "/magasins";
@@ -31,7 +32,7 @@ function Landing() {
     <>
       <Hero />
       <FeaturedProducts />
-      <PaginationContainer/>
+      <ProduitPaginationContainer/>
     </>
   );
 }
