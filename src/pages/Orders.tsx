@@ -4,10 +4,10 @@ import { customFetch } from '@/utils';
 import {
   OrdersList,
   ComplexPaginationContainer,
-  SectionTitle,
 } from '@/components';
 import { ReduxStore } from '@/store';
 import { type OrdersResponse } from '@/utils';
+import SectionTitle from '@/components/SectionTitle';
 
 export const loader =
   (store: ReduxStore): LoaderFunction =>

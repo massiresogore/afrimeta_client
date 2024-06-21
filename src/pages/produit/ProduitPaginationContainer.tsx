@@ -6,18 +6,19 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import { MagasinsPaginationResultInterface } from '@/pages/magasin/interface/MagasinsPaginationResultInterface';
+
 import {
   ProductsResponseWithParams,
   constructUrl,
   constructPrevOrNextUrl,
 } from '@/utils';
-import React, { PropsWithChildren } from 'react';
+//import React, { PropsWithChildren } from 'react';
 
 import { useLoaderData, useLocation } from 'react-router-dom';
+import { ProduitsPaginationResultInterface } from './interrface/ProduitsPaginationResultInterface';
 
-function PaginationContainer() {
-  const  data = useLoaderData() as MagasinsPaginationResultInterface;
+function ProduitPaginationContainer() {
+  const  data = useLoaderData() as ProduitsPaginationResultInterface;
   //const { pageCount, page } = meta.pagination;
 
   const { search, pathname } = useLocation();
@@ -70,4 +71,4 @@ const url = constructUrl({ pageNumber, search, pathname,limitEmelent });
     </Pagination>
   );
 }
-export default PaginationContainer;
+export default ProduitPaginationContainer;

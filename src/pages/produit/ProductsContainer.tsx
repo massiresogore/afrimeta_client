@@ -4,15 +4,16 @@ import ProductsList from './ProductsList';
 import { useState } from 'react';
 import { LayoutGrid, List } from 'lucide-react';
 import { type ProductsResponse } from '@/utils';
-import { Button } from './ui/button';
-import { Separator } from './ui/separator';
+import { Button } from '../../components/ui/button';
+import { Separator } from '../../components/ui/separator';
+import { ProduitsPaginationResultInterface } from '@/pages/produit/interrface/ProduitsPaginationResultInterface';
 
 function ProductsContainer() {
-  const { data:products } = useLoaderData() as ProductsResponse;
+  const { data:products } = useLoaderData() as ProduitsPaginationResultInterface;
  // const totalProducts = meta.pagination.total;
   const totalProducts = products.totalElements;
 
-  //console.log(totalProducts);
+  console.log(products);
   
 
  
@@ -21,7 +22,7 @@ function ProductsContainer() {
   return (
     <>
       {/* HEADER */}
-        <section>
+         <section>
         <div className='flex justify-between items-center mt-8'>
           <h4 className='font-medium text-md'>
             {totalProducts} product{totalProducts > 1 && 's'}
@@ -44,16 +45,9 @@ function ProductsContainer() {
           </div>
         </div>
         <Separator className='mt-4' />
-      </section>
-        <div>
+      </section> 
+         <div>
         {totalProducts === 0 ? (
-          <h5 className='text-2xl mt-16'>
-            Sorry, no products matched your search...
-          </h5>
-        ) : layout === 'grid' ? (
-          <ProductsGrid />
-        ) : <p>List de produits</p>}
-        {/* {totalProducts === 0 ? (
           <h5 className='text-2xl mt-16'>
             Sorry, no products matched your search...
           </h5>
@@ -61,8 +55,8 @@ function ProductsContainer() {
           <ProductsGrid />
         ) : (
            <ProductsList /> 
-        )} */}
-      </div>  
+        )} 
+      </div>   
     </>
   );
 }

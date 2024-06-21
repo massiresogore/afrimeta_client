@@ -1,7 +1,8 @@
 import { useAppSelector } from '@/hooks';
-import { CartItemsList, SectionTitle, CartTotals } from '@/components';
+import { CartItemsList, CartTotals } from '@/components';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import ProduitSectionTitle from './produit/ProduitSectionTitle';
 
 function Cart() {
   const user = useAppSelector((state) => state.userState.user);
@@ -10,14 +11,14 @@ function Cart() {
     (state) => state.cartState.numItemsInCart
   );
   if (numItemsInCart === 0) {
-    return <SectionTitle text='Empty cart' />;
+    return <ProduitSectionTitle text='Empty cart' />;
   }
 
 
 
   return (
     <>
-      <SectionTitle text='Shopping Cart' />
+      <ProduitSectionTitle text='Shopping Cart' />
       <div className='mt-8 grid gap-8 lg:grid-cols-12'>
         <div className='lg:col-span-8'>
           <CartItemsList />

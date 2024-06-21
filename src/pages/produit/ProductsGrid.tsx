@@ -1,11 +1,12 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
-import { MagasinsPaginationResultInterface } from '@/pages/magasin/interface/MagasinsPaginationResultInterface';
 import { MagasinInterface } from '@/pages/magasin/interface/MagasinsInterface';
-//import { formatAsDollars, type ProductsResponse } from '@/utils';
+import { ProduitsPaginationResultInterface } from './interrface/ProduitsPaginationResultInterface';
+import { ProduitInterface } from './interrface/ProduitInterface';
+import { formatAsDollars } from '@/utils';
 
 function ProductsGrid() {
-  const { data: products } = useLoaderData() as MagasinsPaginationResultInterface;
+  const { data: products } = useLoaderData() as ProduitsPaginationResultInterface;
     //console.log(products);
     /* 
   return (
@@ -39,33 +40,41 @@ function ProductsGrid() {
 
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-    
 
-      {products.content.map((magasin:MagasinInterface,index:number) => {
-        const { logo,libele,description } = magasin;
+      {products.content.map((produit:ProduitInterface,index:number) => {
+        const { produitId,
+          titre,
+          description,
+          quantiteStock,
+          prix,
+          dateAjout,
+          categorie,
+          typeProduit,
+          website,
+          couleurs,
+          images } = produit;
         //console.log(logo);
 
         
         
-       // const dollarsAmount = formatAsDollars(price);
+        const dollarsAmount = formatAsDollars(prix);
         return (
-/*           <Link to={`/products/${magasin.magasinId}`} key={magasin.magasinId}>
- */          <Link to={`/products`} key={index}>
-            <Card>
+           <Link to={`/products/${produit.produitId}`} key={produit.produitId}>
+             <Card>
               <CardContent className='p-4'>
                 <img
-                  src={logo.path}
-                  alt={logo.logoName}
+                  src={images[0].path}
+                  alt={images[0].imageName}
                   className='rounded-md h-64 md:h-48 w-full object-cover'
                 />
                 <div className='mt-4 text-center'>
-                  <h2 className='text-xl font-semibold capitalize'>{libele}</h2>
+                  <h2 className='text-xl font-semibold capitalize'>{titre}</h2>
                   <p className='text-primary font-light mt-2'>
-                    {description}
+                    {dollarsAmount}
                   </p>
                 </div>
               </CardContent>
-            </Card>
+            </Card> 
           </Link>
         );
       })}

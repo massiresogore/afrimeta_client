@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 
-function SectionTitle({ text }: { text: string }) {
+function ProduitSectionTitle({ text }: { text: string }) {
   return (
     <div>
       <h2 className='text-3xl font-medium tracking-wider capitalize mb-8'>
@@ -10,4 +10,4 @@ function SectionTitle({ text }: { text: string }) {
     </div>
   );
 }
-export default SectionTitle;
+export default ProduitSectionTitle;
