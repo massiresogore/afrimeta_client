@@ -3,12 +3,12 @@ import MagasinsGrid from './MagasinsGrid';
 import MagasinsList from './MagasinsList';
 import { useState } from 'react';
 import { LayoutGrid, List } from 'lucide-react';
-import { type ProductsResponse } from '@/utils';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { MagasinsPaginationResultInterface } from './interface/MagasinsPaginationResultInterface';
 
 function MagasinsContainer() {
-  const { data:products } = useLoaderData() as ProductsResponse;
+  const { data:products } = useLoaderData() as MagasinsPaginationResultInterface;
  // const totalProducts = meta.pagination.total;
   const totalProducts = products.totalElements;
 

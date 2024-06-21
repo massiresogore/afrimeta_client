@@ -13,7 +13,7 @@ function MagasinHero() {
           Plate forme de Magasins universal, choisissez voitre Magasin préféré où que vous soyez, quand vous voulez ! et faite votre choix.
         </p>
         <Button asChild size='lg' className='mt-10'>
-          <Link to='/magasins'>Nos Magasins</Link>
+          <Link to='/produits'>Nos Produits</Link>
         </Button>
       </div>
       <HeroCarousel />

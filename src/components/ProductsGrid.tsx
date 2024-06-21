@@ -1,7 +1,8 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
+import { MagasinsPaginationResultInterface } from '@/pages/magasin/interface/MagasinsPaginationResultInterface';
+import { MagasinInterface } from '@/pages/magasin/interface/MagasinsInterface';
 //import { formatAsDollars, type ProductsResponse } from '@/utils';
-import { MagasinsPaginationResultInterface } from '@/pages/magasin/MagasinsPaginationResultInterface';
 
 function ProductsGrid() {
   const { data: products } = useLoaderData() as MagasinsPaginationResultInterface;
@@ -40,7 +41,7 @@ function ProductsGrid() {
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
     
 
-      {products.content.map((magasin,index) => {
+      {products.content.map((magasin:MagasinInterface,index:number) => {
         const { logo,libele,description } = magasin;
         //console.log(logo);
 

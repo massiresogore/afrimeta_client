@@ -6,7 +6,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import { MagasinsPaginationResultInterface } from '@/pages/magasin/MagasinsPaginationResultInterface';
+import { MagasinsPaginationResultInterface } from '@/pages/magasin/interface/MagasinsPaginationResultInterface';
 import {
   ProductsResponseWithParams,
   constructUrl,

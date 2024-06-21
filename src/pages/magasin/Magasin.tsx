@@ -1,25 +1,20 @@
 import { MagasinHero, FeaturedMagasins, MagasinPaginationContainer } from '.';
 import { type LoaderFunction } from 'react-router-dom';
-import { ProductsResponseWithParams, customFetch, type ProductsResponse } from '@/utils';
+import { customFetch } from '@/utils';
+import { MagasinsPaginationResultInterface } from './interface/MagasinsPaginationResultInterface';
 
 //const url = '/products?featured=true';
 const url = "/magasins";
-//{{baseUrl}}/produits/bataclan?paage=1&size=10&sort=titre,asc
-/* export const loader: LoaderFunction = async (): Promise<ProductsResponse> => {
-  const response = await customFetch<ProductsResponse>(url);
 
-  return { ...response.data };
-};
- */
 export const loader: LoaderFunction = async ({
   request,
-}): Promise<ProductsResponseWithParams> => {
+}): Promise<MagasinsPaginationResultInterface> => {
 
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);
   
-  const response = await customFetch<ProductsResponse>(url, {
+  const response = await customFetch<MagasinsPaginationResultInterface>(url, {
     params,
   });
 
