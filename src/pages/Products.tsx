@@ -6,8 +6,8 @@ import {
 } from '../utils';
 import { type LoaderFunction } from 'react-router-dom';
 
-/* const url = '/products'; */
-const url = '/magasins';
+ const url = '/produits/bataclan'; 
+//const url = '/magasins';
 
 /* export const loader: LoaderFunction = async ({
   request,

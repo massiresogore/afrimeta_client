@@ -1,13 +1,13 @@
 import { useLoaderData } from 'react-router-dom';
-import ProductsGrid from './ProductsGrid';
-import ProductsList from './ProductsList';
+import MagasinsGrid from './MagasinsGrid';
+import MagasinsList from './MagasinsList';
 import { useState } from 'react';
 import { LayoutGrid, List } from 'lucide-react';
 import { type ProductsResponse } from '@/utils';
-import { Button } from './ui/button';
-import { Separator } from './ui/separator';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
-function ProductsContainer() {
+function MagasinsContainer() {
   const { data:products } = useLoaderData() as ProductsResponse;
  // const totalProducts = meta.pagination.total;
   const totalProducts = products.totalElements;
@@ -51,19 +51,19 @@ function ProductsContainer() {
             Sorry, no products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <ProductsGrid />
+          <MagasinsGrid />
         ) : <p>List de produits</p>}
-        {/* {totalProducts === 0 ? (
+       {totalProducts === 0 ? (
           <h5 className='text-2xl mt-16'>
             Sorry, no products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <ProductsGrid />
+          <MagasinsGrid />
         ) : (
-           <ProductsList /> 
-        )} */}
+           <MagasinsList /> 
+        )} 
       </div>  
     </>
   );
 }
-export default ProductsContainer;
+export default MagasinsContainer;

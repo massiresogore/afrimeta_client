@@ -27,15 +27,22 @@ import { action as loginUser } from './pages/Login';
 import { action as checkoutAction } from './components/CheckoutForm';
 
 import { store } from './store';
+import { Magasin } from './pages/magasin';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout />,
     errorElement: <Error />,
     children: [
-      {
+      /* {
         index: true,
         element: <Landing />,
+        errorElement: <ErrorElement />,
+        loader: landingLoader,
+      }, */
+      {
+        index: true,
+        element: <Magasin />,
         errorElement: <ErrorElement />,
         loader: landingLoader,
       },
