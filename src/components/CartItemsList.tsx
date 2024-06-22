@@ -10,11 +10,12 @@ import {
 function CartItemsList() {
   const cartItems = useAppSelector((state) => state.cartState.cartItems);
 
-  
 
   return (
     <div>
       {cartItems.map((cartItem) => {
+        //console.log(cartItem);
+        
         const { cartID, title, price, image, amount, company, productColor } =
           cartItem;
         return (

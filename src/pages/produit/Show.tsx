@@ -13,12 +13,13 @@ import { SelectProductAmount, SelectProductColor } from '@/components';
 import { Mode } from '@/components/SelectProductAmount';
 import { useAppDispatch } from '@/hooks';
 import { addItem } from '@/features/cart/cartSlice';
+import { ProduitResultInterface } from './interrface/ProduitResultInterface';
 
 export const loader: LoaderFunction = async ({
   params,
-}): Promise<SingleProductResponse> => {
-  const response = await customFetch<SingleProductResponse>(
-    `/products/${params.id}`
+}): Promise<ProduitResultInterface> => {
+  const response = await customFetch<ProduitResultInterface>(
+    `/produits/${params.id}`
   );
   return { ...response.data };
 };
@@ -31,23 +32,34 @@ export const loader: LoaderFunction = async ({
   nouveau produit, permettant ainsi de savoir le nombre exact de produit
   dans le panier.
 */
-function SingleProduct() {
-  const { data: product } = useLoaderData() as SingleProductResponse;
-  const { image, title, price, description, colors, company } =
-    product.attributes;
-  const dollarsAmount = formatAsDollars(price);
-  const [productColor, setProductColor] = useState(colors[0]);
+function Show() {
+  const { data: produit } = useLoaderData() as ProduitResultInterface;
+//  const { image, title, price, description, colors, company } =
+  //  product.attributes;
+  const { produitId,
+      titre,
+      description,
+      quantiteStock,
+      prix,
+      dateAjout,
+      categorie,
+      typeProduit,
+      website,
+      couleurs,
+      images } = produit;
+  const dollarsAmount = formatAsDollars(prix);
+  const [productColor, setProductColor] = useState(couleurs[0].nom);
   const [amount, setAmount] = useState(1);
   const dispatch = useAppDispatch();
   const cartProduct: CartItem = {
-    cartID: product.id + productColor,
-    productID: product.id,
-    image,
-    title,
-    price,
+    cartID: produitId + productColor,
+    productID: produitId,
+    image: images[0].path,
+    title:titre,
+    price:prix.toString(),
     amount,
     productColor,
-    company,
+    company: website.websiteUrl,
   };
 
   const addToCart = () => {
@@ -69,21 +81,21 @@ function SingleProduct() {
       <div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
         {/* IMAGE FIRST COL */}
         <img
-          src={image}
-          alt={title}
+          src={images[0].path}
+          alt={titre}
           className='w-96 h-96 object-cover rounded-lg lg:w-full'
         />
         {/* PRODUCT INFO SECOND COL */}
         <div>
-          <h1 className='capitalize text-3xl font-bold'>{title}</h1>
-          <h4 className='text-xl mt-2'>{company}</h4>
+          <h1 className='capitalize text-3xl font-bold'>{titre}</h1>
+          <h4 className='text-xl mt-2'>{website.websiteUrl}</h4>
           <p className='mt-3 text-md bg-muted inline-block p-2 rounded-md'>
             {dollarsAmount}
           </p>
           <p className='mt-6 leading-8'>{description}</p>
           {/* COLORS  */}
           <SelectProductColor
-            colors={colors}
+            colors={couleurs}
             productColor={productColor}
             setProductColor={setProductColor}
           />
@@ -103,4 +115,4 @@ function SingleProduct() {
     </section>
   );
 }
-export default SingleProduct;
+export default Show;

@@ -5,7 +5,6 @@ import {
   Landing,
   Error,
   Products,
-  SingleProduct,
   Cart,
   About,
   Register,
@@ -17,7 +16,7 @@ import { ErrorElement } from './components';
 
 import { loader as landingLoader } from './pages/Landing';
 import { loader as productsLoader } from './pages/produit/Products';
-import { loader as singleProductLoader } from './pages/SingleProduct';
+import { loader as showProductLoader } from "@/pages/produit/Show"
 import { loader as checkoutLoader } from './pages/Checkout';
 import { loader as ordersLoader } from './pages/Orders';
 // actions
@@ -28,6 +27,7 @@ import { action as checkoutAction } from './components/CheckoutForm';
 
 import { store } from './store';
 import { Magasin } from './pages/magasin';
+import Show from './pages/produit/Show';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -54,9 +54,9 @@ const router = createBrowserRouter([
       },
       {
         path: 'products/:id',
-        element: <SingleProduct />,
+        element: <Show />,
         errorElement: <ErrorElement />,
-        loader: singleProductLoader,
+        loader: showProductLoader,
       },
       {
         path: 'cart',

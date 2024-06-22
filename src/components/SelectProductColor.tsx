@@ -1,5 +1,10 @@
 type SelectProductColorProps = {
-  colors: string[];
+  colors: [
+    {
+        couleurId: number,
+        nom: string
+    }
+];
   productColor: string;
   setProductColor: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -16,13 +21,13 @@ function SelectProductColor({
         {colors.map((color) => {
           return (
             <button
-              key={color}
+              key={color.couleurId}
               type='button'
               className={`rounded-full w-6 h-6 mr-2 border-2 ${
-                color === productColor && 'border-primary'
+                color.nom === productColor && 'border-primary'
               }`}
-              style={{ backgroundColor: color }}
-              onClick={() => setProductColor(color)}
+              style={{ backgroundColor: color.nom }}
+              onClick={() => setProductColor(color.nom)}
             ></button>
           );
         })}
