@@ -26,11 +26,15 @@ const userSlice = createSlice({
     loginUser: (state, action: PayloadAction<User>) => {
       const user = action.payload;
       state.user = user;
+      console.log(user);
+      
       localStorage.setItem('user', JSON.stringify(user));
+
+     /* //Pour le test
       if (user.username === 'demo user') {
         toast({ description: 'Welcome Guest User' });
         return;
-      }
+      }*/
       toast({ description: 'Login successful' });
     },
     logoutUser: (state) => {
