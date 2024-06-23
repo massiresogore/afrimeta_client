@@ -13,22 +13,22 @@ export const loader =
   (store: ReduxStore): LoaderFunction =>
   async ({ request }): Promise<OrdersResponse | Response | null> => {
     const user = store.getState().userState.user;
-/*
+
     if (!user) {
       toast({ description: 'Please login to continue' });
       return redirect('/login');
-    }*/
+    }
     const params = Object.fromEntries([
       ...new URL(request.url).searchParams.entries(),
     ]);
     try {
-      const response = await customFetch.get<OrdersResponse>('/orders', {
-        params,
+       const response = await customFetch.get<OrdersResponse>(`/commandes/client/${user.userId}`, {
+        //params,
         headers: {
           Authorization: `Bearer ${user?.jwt}`,
         },
       });
-      return { ...response.data };
+      return { ...response.data }; 
     } catch (error) {
       console.log(error);
       toast({ description: 'Failed to fetch orders' });
@@ -37,16 +37,16 @@ export const loader =
   };
 
 function Orders() {
-  const { meta } = useLoaderData() as OrdersResponse;
+  /* const { meta } = useLoaderData() as OrdersResponse;
   if (meta.pagination.total < 1) {
     return <SectionTitle text='Please make an order' />;
-  }
+  } */
 
   return (
     <>
       <SectionTitle text='Your Orders' />
       <OrdersList />
-      <ComplexPaginationContainer />
+      {/* <ComplexPaginationContainer /> */}
     </>
   );
 }

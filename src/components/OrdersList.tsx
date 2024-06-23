@@ -13,15 +13,16 @@ import {
 } from '@/components/ui/table';
 
 function OrdersList() {
-  const { data: orders, meta } = useLoaderData() as OrdersResponse;
+  //const { data: orders, meta } = useLoaderData() as OrdersResponse;
 
   return (
     <div className='mt-16'>
       <h4 className='mb-4 capitalize'>
-        total orders : {meta.pagination.total}
+        total orders : 
+        {/*{meta.pagination.total} */}
       </h4>
       <Table>
-        <TableCaption>A list of your recent orders.</TableCaption>
+        <TableCaption>La list de vos recentes commandes.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Name</TableHead>
@@ -31,7 +32,7 @@ function OrdersList() {
             <TableHead>Date</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+       {/*  <TableBody>
           {orders.map((order) => {
             const { name, address, numItemsInCart, orderTotal, createdAt } =
               order.attributes;
@@ -45,7 +46,7 @@ function OrdersList() {
               </TableRow>
             );
           })}
-        </TableBody>
+        </TableBody> */}
       </Table>
     </div>
   );

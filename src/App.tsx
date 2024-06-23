@@ -17,17 +17,18 @@ import { ErrorElement } from './components';
 import { loader as landingLoader } from './pages/Landing';
 import { loader as productsLoader } from './pages/produit/Products';
 import { loader as showProductLoader } from "@/pages/produit/Show"
-import { loader as checkoutLoader } from './pages/Checkout';
+import { loader as commandeLoader } from './pages/commande/Commande';
 import { loader as ordersLoader } from './pages/Orders';
 // actions
 
 import { action as registerUser } from './pages/auth/Register';
 import { action as loginUser } from './pages/auth/Login';
-import { action as checkoutAction } from './components/CheckoutForm';
+import { action as commandetAction } from './pages/commande/CommandeForm';
 
 import { store } from './store';
 import { Magasin } from './pages/magasin';
 import Show from './pages/produit/Show';
+import Commande from './pages/commande/Commande';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -70,10 +71,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'checkout',
-        element: <Checkout />,
+        element: <Commande />,
         errorElement: <ErrorElement />,
-        loader: checkoutLoader(store),
-        action: checkoutAction(store),
+        loader: commandeLoader(store),
+        action: commandetAction(store),
       },
       {
         path: 'orders',
