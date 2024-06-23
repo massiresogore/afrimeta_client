@@ -59,8 +59,10 @@ function Show() {
     price:prix.toString(),
     amount,
     productColor,
-    company: website.websiteUrl,
+    company: website.websiteUrl
   };
+
+
 
   const addToCart = () => {
     dispatch(addItem(cartProduct));

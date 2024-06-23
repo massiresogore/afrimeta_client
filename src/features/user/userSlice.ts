@@ -4,6 +4,7 @@ import { toast } from '@/components/ui/use-toast';
 export type User = {
   username: string;
   jwt: string;
+  userId:number;
 };
 
 type UserState = {

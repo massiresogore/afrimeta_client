@@ -13,9 +13,6 @@ function Cart() {
   if (numItemsInCart === 0) {
     return <ProduitSectionTitle text='Empty cart' />;
   }
-
-
-
   return (
     <>
       <ProduitSectionTitle text='Shopping Cart' />
@@ -25,20 +22,13 @@ function Cart() {
         </div>
         <div className='lg:col-span-4 lg:pl-4'>
           <CartTotals />
-
-          <Button asChild className='mt-8 w-full'>
-            
-              <Link to='/checkout'> Proceed to checkout</Link>
-          
-          </Button>
-          
-         {/*  <Button asChild className='mt-8 w-full'>
+           <Button asChild className='mt-8 w-full'>
           { user ? (
            <Link to='/checkout'> Proceed to checkout</Link>
          ) : (
            <Link to='/login'>Please Login</Link>
          )}
-       </Button> */}
+       </Button>
           
         </div>
       </div>

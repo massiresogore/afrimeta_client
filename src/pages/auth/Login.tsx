@@ -46,7 +46,8 @@ export const action =
 
       const username = body.data.userInfo.username;
       const jwt = body.data.token;
-      store.dispatch(loginUser({ username, jwt }));
+      const userId = body.data.userInfo.user_id;
+      store.dispatch(loginUser({ username, jwt,userId }));
       return redirect('/');
     };
 
@@ -62,7 +63,8 @@ function Login() {
       });
       const username = response.data.user.username;
       const jwt = response.data.jwt;
-      dispatch(loginUser({ username, jwt }));
+      const userId = response.data.user.id;
+      dispatch(loginUser({ username, jwt,userId }));
       navigate('/');
     } catch (error) {
       console.log(error);

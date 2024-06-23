@@ -62,6 +62,30 @@ export type CartItem = {
   productColor: string;
   company: string;
 };
+/************** Panier **********/
+export type PanierItem = {
+  cartID: string;
+  productID: number;
+  price: string;
+  amount: number;
+  productColor: string;
+};
+
+export type Panier = {
+  produitId: number,
+  quantity: number,
+  couleurName: string
+}
+
+export type CommandeRequest = {
+  adresse: string,
+  prixTotal: string,
+  commandeTotal: string,
+  paniers: Panier[],
+  nombreProduit: number,
+}
+/************** End Panier **********/
+
 
 //Valeur par défaut du state
 export type CartState = {
