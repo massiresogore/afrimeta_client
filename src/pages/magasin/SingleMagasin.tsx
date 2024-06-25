@@ -25,8 +25,7 @@ export const action = (store: ReduxStore): ActionFunction => async ({ request,pa
 const SingleMagasin = () => {
   return (
     <>
-    <p style={{marginBottom: '15px'}}>Affiche le magasin concerné</p>
-    
+    <p style={{marginBottom: '15px'}}>Afficher le magasin concerné</p>
     <WebsiteForm/>
     </>
   )

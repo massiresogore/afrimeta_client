@@ -7,7 +7,7 @@ import { Separator } from './ui/separator';
 function CartTotals() {
   const { cartTotal, shipping, tax, orderTotal } = useAppSelector(
     (state) => state.cartState
-  );
+  );  
   return (
     <Card className='p-8 bg-muted'>
       <CartTotalRow label='Sous Total' amount={cartTotal} />
@@ -15,7 +15,8 @@ function CartTotals() {
       <CartTotalRow label='Taxe en pourcentage' amount={tax.toPrecision(2)} />
 {/*       <CartTotalRow label='Taxe en pourcentage' amount={tax.toPrecision(2)} />
  */}      <CardTitle className='mt-8'>
-        <CartTotalRow label='Total de la commande' amount={orderTotal.toPrecision(2)} lastRow />
+        <CartTotalRow label='Total de la commande' amount={orderTotal} lastRow />
+        <CartTotalRow label='Calcul de tax' amount={`(0,2 * sousTotal) + sous total`} lastRow />
       </CardTitle>
     </Card>
   );
