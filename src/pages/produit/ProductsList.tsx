@@ -35,7 +35,7 @@ function ProductsList() {
                   <h2 className='text-xl font-semibold capitalize'>{titre}</h2>
                   <h4>{website.websiteUrl}</h4>
                 </div>
-                <p className='text-primary md:ml-auto'>{dollarsAmount}</p>
+                <p className='text-primary md:ml-auto'>{prix}</p>
               </CardContent>
             </Card>
           </Link>

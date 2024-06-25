@@ -78,5 +78,5 @@ export const ThirdColumn = ({
   );
 };
 export const FourthColumn = ({ price }: { price: string }) => {
-  return <p className='font-medium sm:ml-auto'>{formatAsDollars(price)}</p>;
+  return <p className='font-medium sm:ml-auto'>{price}</p>;
 };

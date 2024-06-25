@@ -1,7 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
 
-import { type OrdersResponse } from '@/utils';
-
 import {
   Table,
   TableBody,
@@ -11,10 +9,14 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { CommandeInterface } from '@/pages/commande/interface/CommandeInterface';
+import { CommandeResultInterface } from '@/pages/commande/interface/CommandeResultInterface';
 
 function OrdersList() {
-  //const { data: orders, meta } = useLoaderData() as OrdersResponse;
+  const  data  = useLoaderData() as CommandeResultInterface;
 
+  
+  
   return (
     <div className='mt-16'>
       <h4 className='mb-4 capitalize'>
@@ -32,21 +34,20 @@ function OrdersList() {
             <TableHead>Date</TableHead>
           </TableRow>
         </TableHeader>
-       {/*  <TableBody>
-          {orders.map((order) => {
-            const { name, address, numItemsInCart, orderTotal, createdAt } =
-              order.attributes;
+          <TableBody>
+          {data.data.produitResponses.map((order,index) => {
+            
             return (
-              <TableRow key={order.id}>
-                <TableCell>{name}</TableCell>
-                <TableCell>{address}</TableCell>
-                <TableCell className='text-center'>{numItemsInCart}</TableCell>
-                <TableCell>{orderTotal}</TableCell>
-                <TableCell>{new Date(createdAt).toDateString()}</TableCell>
+              <TableRow key={index}>
+                <TableCell>{data.data.name}</TableCell>
+                <TableCell>{data.data.address}</TableCell>
+                <TableCell className='text-center'>{data.data.numItemsInCart}</TableCell>
+                <TableCell>{data.data.orderTotal}</TableCell>
+                <TableCell>{new Date(data.data.createdAt).toDateString()}</TableCell>
               </TableRow>
             );
           })}
-        </TableBody> */}
+        </TableBody>
       </Table>
     </div>
   );

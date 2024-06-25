@@ -10,6 +10,9 @@ export const loader: LoaderFunction = async ({
   request,
 }): Promise<MagasinsPaginationResultInterface> => {
 
+  console.log("msi");
+  
+
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);

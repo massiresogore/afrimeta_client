@@ -19,9 +19,7 @@ import { error } from 'console';
 import { AuthResultResponseInterface } from './interface/AuthResultResponseInterface';
 import { useState } from 'react';
 
-export const action =
-  (store: ReduxStore): ActionFunction =>
-    async ({ request }): Promise<Response | null> => {
+export const action = (store: ReduxStore): ActionFunction => async ({ request }): Promise<Response | null> => {
       const formData = await request.formData();
       const data = Object.fromEntries(formData);
 
@@ -47,7 +45,8 @@ export const action =
       const username = body.data.userInfo.username;
       const jwt = body.data.token;
       const userId = body.data.userInfo.user_id;
-      store.dispatch(loginUser({ username, jwt,userId }));
+      const role =  body.data.userInfo.role;
+      store.dispatch(loginUser({ username, jwt,userId, role }));
       return redirect('/');
     };
 
@@ -79,8 +78,8 @@ function Login() {
         </CardHeader>
         <CardContent>
           <Form method='post'>
-            <FormInput type='text' label='username' name='username' />
-            <FormInput type='password' name='password' />
+            <FormInput type='text' label='username' defaultValue='micho' name='username' />
+            <FormInput type='password' defaultValue='12345678' name='password' />
             <SubmitBtn text='Login' className='w-full mt-4' />
             <Button
               type='button'

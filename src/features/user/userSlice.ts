@@ -5,6 +5,7 @@ export type User = {
   username: string;
   jwt: string;
   userId:number;
+  role:string |null;
 };
 
 type UserState = {

@@ -47,7 +47,7 @@ function Show() {
       website,
       couleurs,
       images } = produit;
-  const dollarsAmount = formatAsDollars(prix);
+  //const dollarsAmount = formatAsDollars(prix);
   const [productColor, setProductColor] = useState(couleurs[0].nom);
   const [amount, setAmount] = useState(1);
   const dispatch = useAppDispatch();
@@ -92,7 +92,7 @@ function Show() {
           <h1 className='capitalize text-3xl font-bold'>{titre}</h1>
           <h4 className='text-xl mt-2'>{website.websiteUrl}</h4>
           <p className='mt-3 text-md bg-muted inline-block p-2 rounded-md'>
-            {dollarsAmount}
+            {prix}
           </p>
           <p className='mt-6 leading-8'>{description}</p>
           {/* COLORS  */}

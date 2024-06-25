@@ -1,10 +1,9 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
-import { MagasinInterface } from '@/pages/magasin/interface/MagasinsInterface';
 import { ProduitsPaginationResultInterface } from './interrface/ProduitsPaginationResultInterface';
 import { ProduitInterface } from './interrface/ProduitInterface';
 import { formatAsDollars } from '@/utils';
-
+import defaultImage from "../../../public/defaultImage.png"
 function ProductsGrid() {
   const { data: products } = useLoaderData() as ProduitsPaginationResultInterface;
     //console.log(products);
@@ -63,14 +62,14 @@ function ProductsGrid() {
              <Card>
               <CardContent className='p-4'>
                 <img
-                  src={images[0].path}
-                  alt={images[0].imageName}
+                  src={images[0] ? images[0]?.path : defaultImage }
+                  alt={images[0]?.imageName}
                   className='rounded-md h-64 md:h-48 w-full object-cover'
                 />
                 <div className='mt-4 text-center'>
                   <h2 className='text-xl font-semibold capitalize'>{titre}</h2>
                   <p className='text-primary font-light mt-2'>
-                    {dollarsAmount}
+                    {prix}€
                   </p>
                 </div>
               </CardContent>

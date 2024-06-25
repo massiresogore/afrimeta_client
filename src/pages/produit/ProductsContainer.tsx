@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import ProductsGrid from './ProductsGrid';
 import ProductsList from './ProductsList';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { LayoutGrid, List } from 'lucide-react';
 import { type ProductsResponse } from '@/utils';
 import { Button } from '../../components/ui/button';
@@ -12,10 +13,6 @@ function ProductsContainer() {
   const { data:products } = useLoaderData() as ProduitsPaginationResultInterface;
  // const totalProducts = meta.pagination.total;
   const totalProducts = products.totalElements;
-
-  console.log(products);
-  
-
  
 
   const [layout, setLayout] = useState<'grid' | 'list'>('grid');

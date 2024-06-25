@@ -7,8 +7,8 @@ const defaultState: CartState = {
   cartItems: [],//ListePanier
   numItemsInCart: 0,
   cartTotal: 0,
-  shipping: 500,
-  tax: 0,
+  shipping: 0,
+  tax: 0.2,
   orderTotal: 0,
 };
 
@@ -75,8 +75,16 @@ const cartSlice = createSlice({
       toast({ description: 'Amount Updated' });
     },
     calculateTotals: (state) => {
-      state.tax = 0.1 * state.cartTotal;
-      state.orderTotal = state.cartTotal + state.shipping + state.tax;
+      /**
+       * Taxe=Prix hors taxe (HT)× 
+          100
+          Taux de TVA
+
+          TVA= 20%
+       */
+
+     // state.tax = 0.1 * state.cartTotal;
+      state.orderTotal = (state.tax * state.cartTotal) + state.cartTotal + state.shipping;
       localStorage.setItem('cart', JSON.stringify(state));
     },
   },
@@ -85,3 +93,25 @@ const cartSlice = createSlice({
 export const { addItem, clearCart, removeItem, editItem } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+/**
+ * Taux intermédiaire de 10% : Ce taux concerne certains 
+ * produits alimentaires consommés sur place (dans les restaurants,
+ *  par exemple) et certains aliments préparés ou transformés 
+ * (comme les plats cuisinés)
+ * 
+ * 
+ * 
+ * 
+ * Taux normal de 20% : Ce taux s'applique aux boissons 
+ * alcoolisées et à certains produits alimentaires considérés 
+ * comme non essentiels.
+ * 
+ * Taux réduit de 5,5% : Ce taux s'applique principalement 
+ * aux produits alimentaires de première nécessité, tels que 
+ * les fruits, les légumes, la viande, le poisson, les produits 
+ * laitiers, le pain, et les boissons non alcoolisées.
+ * 
+ * En France, les produits d'habillement sont soumis au taux 
+ * normal de la TVA, qui est de 20%.
+ */

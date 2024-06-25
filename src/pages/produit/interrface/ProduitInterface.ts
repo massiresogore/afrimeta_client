@@ -28,5 +28,7 @@ export type ProduitInterface = {
             imageName: string,
             path: string
         }
-    ]
+    ],
+    quantiteCommande: number | null
+
 }
